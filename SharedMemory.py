@@ -1,7 +1,7 @@
 #######################################################################################
 #   Program:    SharedMemory.py
 #   Authors:    Isaac Peacock, Aiden Timmons
-#   
+#   Date:       April 10, 2024
 #######################################################################################
 #   Purpose:    Shared memory implementation of the Traveling Salesman Problem
 #               using threading to spit the amount of permutations between processes.
@@ -82,6 +82,7 @@ def travel_distance(path, cities):
 
 #############################################################
 # Generator to get all permutations of the given path
+# Function Was shown to us by Dr. Kim in CS 4795 (AI)
 #
 # path: list of cities to visit
 #############################################################
@@ -153,3 +154,10 @@ print(f"Minimum distance: {min_dist}")
 print(f"Best path: {optimal_path}")
 
 #plot_path(min_path, cities)
+
+###########################################################################################
+# How to Run: python SharedMemory.py
+# What we Ran: from 7 to 12 cities
+# Where we Ran: On windows on Isaac's Laptop and On a Ubuntu VM on Aidens Laptop
+# Number of Runs: We only got to run this a few times because of the time it takes to run
+###########################################################################################
