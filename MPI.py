@@ -1,7 +1,7 @@
 #######################################################################################
 #   Program:    MPI.py
 #   Authors:    Isaac Peacock, Aiden Timmons
-#   
+#   Date:       April 10, 2024
 #######################################################################################
 #   Purpose:    Distributed Parallel implementation of the Traveling Salesman Problem
 #               using MPI4py to spit the amount of permutations between processes
@@ -34,6 +34,7 @@ def plot_path(cities, path, fileName="TSP_Path.html"):
 
     # Create a map
     # Set the location to the average of all the cities
+    # Folium is an external library used to plot path on a real map.
     m = folium.Map(location=[sum(y)/len(y), sum(x)/len(x)], tiles="Cartodb Positron", zoom_start=3)
     for i in range(len(path) - 1):
         # Draw a line between each city in the path
@@ -66,15 +67,19 @@ def parallel_tsp(cities):
     best_path = None
 
     # Generate permutations for the current process
+    # This uses pythons iter tools library (similar to Java's Iterable) to iterate through all possible
+    # permutations and split it up based on a processors start_perm and end_perm indexes
     for perm in itertools.islice(itertools.permutations(range(num_cities)), start_perm, end_perm):
 
         distance = 0
-        
+
+        # Calculate the distance of travelling the path for this permutation
         for i in range(num_cities - 1):
             distance += calculate_distance(cities[perm[i]], cities[perm[i+1]])
         # Return to the starting city
         distance += calculate_distance(cities[perm[-1]], cities[perm[0]])
- 
+
+        # If this path is better than the processors current min, replace it
         if distance < min_distance:
             min_distance = distance
             best_path = perm
@@ -147,3 +152,10 @@ if __name__ == "__main__":
 
     # Run the parallel TSP algorithm
     parallel_tsp(cities)
+
+###########################################################################################
+# How to Run: mpiexec -n <num_processors> python MPI.py
+# What we Ran: from 7 to 12 cities
+# Where we Ran: On windows on Isaac's Laptop and On a Ubuntu VM on Aidens Laptop
+# Number of Runs: We only got to run each a few times because of the time it takes to run
+###########################################################################################
