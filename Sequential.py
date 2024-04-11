@@ -1,7 +1,7 @@
 #######################################################################################
 #   Program:    Sequential.py
 #   Authors:    Isaac Peacock, Aiden Timmons
-#   
+#   Date:       April 10, 2024
 #######################################################################################
 #   Purpose:    Sequential implementation of the Traveling Salesman Problem
 #               uses the itertools library to generate all permutations of the cities
@@ -108,3 +108,10 @@ if __name__ == "__main__":
     y = [city['y'] for city in cities]
 
     tsp_bruteforce(cities, start_path)
+
+###########################################################################################
+# How to Run: python Sequential.py
+# What we Ran: from 7 to 12 cities
+# Where we Ran: On Windows on Isaac's Laptop and On an Ubuntu VM on Aidens Laptop
+# Number of Runs: We only got to run this a few times because of the time it takes to run
+###########################################################################################
