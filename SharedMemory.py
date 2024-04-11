@@ -158,6 +158,6 @@ print(f"Best path: {optimal_path}")
 ###########################################################################################
 # How to Run: python SharedMemory.py
 # What we Ran: from 7 to 12 cities
-# Where we Ran: On windows on Isaac's Laptop and On a Ubuntu VM on Aidens Laptop
+# Where we Ran: On Windows on Isaac's Laptop and On an Ubuntu VM on Aidens Laptop
 # Number of Runs: We only got to run this a few times because of the time it takes to run
 ###########################################################################################
